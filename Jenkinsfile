@@ -35,7 +35,7 @@ podTemplate(label: 'pod-hugo-app', containers: [
                 stage('Docker Build & Push Current & Latest Versions') {
     //                  sh ("docker build -t ${DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER} .")
                       sh ("mkdir -p /home/jenkins/.docker/")
-                      sh ("cp  /test/config.json  ~/.docker/config.json")
+         //             sh ("cp  /test/config.json  ~/.docker/config.json")
         //              sh ("docker tag ${DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER} ${DOCKER_IMAGE_NAME}:latest")
                     sh ("docker build -t ${DOCKER_HUB_ACCOUNT}/${DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER} .")
                     sh ("docker push ${DOCKER_HUB_ACCOUNT}/${DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER}")

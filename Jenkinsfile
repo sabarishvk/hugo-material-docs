@@ -5,7 +5,7 @@ podTemplate(label: 'pod-hugo-app', containers: [
     containerTemplate(name: 'kubectl', image: 'smesch/kubectl', ttyEnabled: true, command: 'cat',
         volumes: [secretVolume(secretName: 'kube-config', mountPath: '/root/.kube')]),
     containerTemplate(name: 'docker', image: 'docker', ttyEnabled: true, command: 'cat',
-        envVars: [containerEnvVar(key: 'DOCKER_CONFIG', value: '/tmp/'),])],
+        envVars: [containerEnvVar(key: 'DOCKER_CONFIG', value: '/test/'),])],
         volumes: [secretVolume(secretName: 'docker-config', mountPath: '/test'),
                   hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')
   ]) {
@@ -34,7 +34,7 @@ podTemplate(label: 'pod-hugo-app', containers: [
             container('docker') {
                 stage('Docker Build & Push Current & Latest Versions') {
     //                  sh ("docker build -t ${DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER} .")
-      //                sh ("docker images ")
+                      sh ("cat  /tmp/config.json ")
         //              sh ("docker tag ${DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER} ${DOCKER_IMAGE_NAME}:latest")
                     sh ("docker build -t ${DOCKER_HUB_ACCOUNT}/${DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER} .")
                     sh ("docker push ${DOCKER_HUB_ACCOUNT}/${DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER}")

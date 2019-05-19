@@ -14,7 +14,7 @@ podTemplate(label: 'pod-hugo-app', containers: [
 
         def DOCKER_HUB_ACCOUNT = 'sameer10049'
         def DOCKER_IMAGE_NAME = 'hugo-app-jenkins'
-        def K8S_DEPLOYMENT_NAME = 'hugo-app'
+        def K8S_DEPLOYMENT_NAME = 'jenkins-leader'
 
         stage('Clone Hugo App Repository') {
             checkout scm

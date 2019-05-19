@@ -46,8 +46,8 @@ podTemplate(label: 'pod-hugo-app', containers: [
 
             container('kubectl') {
                 stage('Deploy New Build To Kubernetes') {
-                    sh ("kubectl set image deployment/jenkins-leader jenkins-leader=${DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER}")
-                  //  sh ("kubectl set image deployment/${K8S_DEPLOYMENT_NAME} ${K8S_DEPLOYMENT_NAME}=${DOCKER_HUB_ACCOUNT}/${DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER}")
+                    //sh ("kubectl set image deployment/jenkins-leader jenkins-leader=${DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER}")
+                    sh ("kubectl set image deployment/${K8S_DEPLOYMENT_NAME} ${K8S_DEPLOYMENT_NAME}=${DOCKER_HUB_ACCOUNT}/${DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER}")
                 }
             } 
 
